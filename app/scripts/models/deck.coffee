@@ -9,7 +9,10 @@ angular
     # TODO randomize the cards
 
   deal: (count = 1) ->
-    @cards.splice 0, count
+    for i in [0...count]
+      card = @cards.shift()
+      @cards.push card
+      card
 
   dealOne: ->
     @deal()[0]
