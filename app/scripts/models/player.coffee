@@ -1,12 +1,25 @@
-class Player
-  constructor: (@name, @whiteCards = []) ->
-    @blackCards = []
+'use strict'
 
-  getScore: ->
-    @blackCards.length
+angular
+.module('cardsAgainstApp')
+.factory 'Player', ->
 
-  addWhiteCard: (whiteCards...) ->
-    @whiteCards = @whiteCards.concat whiteCards
+  PLAYER_ID = 0
 
-  addBlackCard: (blackCards...) ->
-    @blackCards = @blackCards.concat blackCards
+  class Player
+    constructor: (@name, @whiteCards = []) ->
+      @id = PLAYER_ID++
+      @blackCards = []
+
+    getScore: ->
+      @blackCards.length
+
+    addWhiteCards: (whiteCards) ->
+      @whiteCards = @whiteCards.concat whiteCards
+
+    addBlackCards: (blackCards) ->
+      @blackCards = @blackCards.concat blackCards
+
+    removeWhiteCard: (cardId) ->
+      @whiteCards.splice(cardId, 1)[0]
+

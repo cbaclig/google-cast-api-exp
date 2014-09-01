@@ -1,10 +1,14 @@
-class BlackCard extends Card
+'use strict'
+
+angular
+.module('cardsAgainstApp')
+.factory 'BlackCard', ['Card', (Card) -> class BlackCard extends Card
   BLANK_REGEXP = "_+"
 
-  constructor: (@text) ->
-    @blanks = @text.match(new RegExp(BLANK_REGEXP, 'g')).length
+  constructor: ->
+    super
 
-  getText: -> @text
+    @blanks = @text.match(new RegExp(BLANK_REGEXP, 'g'))?.length or 0
 
   # example:
   # blackCard.apply (c.getText() for c in whiteCards)
@@ -21,3 +25,4 @@ class BlackCard extends Card
         , @getText()
     else
       @getText() + ' ' + fillers.join(' ')
+]

@@ -1,4 +1,8 @@
-class Deck
+'use strict'
+
+angular
+.module('cardsAgainstApp')
+.factory 'Deck', -> class Deck
   constructor: (@cards = []) ->
 
   shuffle: ->
@@ -6,3 +10,6 @@ class Deck
 
   deal: (count = 1) ->
     @cards.splice 0, count
+
+  dealOne: ->
+    @deal()[0]
