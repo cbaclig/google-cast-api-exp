@@ -23,6 +23,8 @@ angular
 
     selectWinningWhiteCard: (cardId) ->
       [@winningCard, @winningPlayer] = @board.getWhiteCardAndPlayer cardId
+      
+      @winningPlayer.addBlackCards @winningCard
 
     join: (player) ->
       player.addWhiteCards @whiteCards.deal(MAX_WHITE_CARDS)
