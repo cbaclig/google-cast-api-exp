@@ -21,6 +21,12 @@ angular
       @_cardPlayerMap[@whiteCards[cardId]]
     ]
 
+  hasWhiteCardForPlayer: (player) ->
+    for whiteCard, existingPlayer of @_cardPlayerMap
+      return true if existingPlayer.isEqual player
+
+    false
+
   clear: ->
     @blackCard = null
     @whiteCards = []

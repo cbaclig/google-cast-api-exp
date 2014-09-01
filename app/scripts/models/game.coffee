@@ -16,9 +16,10 @@ angular
 
     playWhiteCard: (playerId, cardId) ->
       player = @players[playerId]
-
-      @board.addWhiteCard player, player.playWhiteCard(cardId)
-      player.addWhiteCards [@whiteCards.dealOne()]
+      
+      unless @board.hasWhiteCardForPlayer player
+        @board.addWhiteCard player, player.playWhiteCard(cardId)
+        player.addWhiteCards [@whiteCards.dealOne()]
 
     selectWinningWhiteCard: (cardId) ->
       [@winningCard, @winningPlayer] = @board.getWhiteCardAndPlayer cardId
@@ -31,17 +32,6 @@ angular
 
     leave: (player) ->
       @players.remove player
-
-    playRound: -> $.Deferred (deferred) ->
-      @board.setBlackCard @blackCards.deal()
-
-      @waitForPlayerWhiteCards()
-      .then =>
-        @waitForWinnerToBeSelected()
-      .then (winningPlayer) =>
-        winningPlayer.addBlackCard @board.getBlackCard()
-        @board.clear()
-        defered.resolve()
 
     _clearWinningRound: ->
       @winningCard = null

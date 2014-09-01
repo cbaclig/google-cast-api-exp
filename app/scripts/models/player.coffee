@@ -22,3 +22,6 @@ angular
 
     playWhiteCard: (cardId) ->
       @whiteCards.splice(cardId, 1)[0]
+
+    isEqual: (player) ->
+      @id is player.id
