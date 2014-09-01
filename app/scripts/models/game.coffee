@@ -7,12 +7,11 @@ angular
     MAX_WHITE_CARDS = 2
 
     constructor: (@board, @blackCards, @whiteCards, @players = []) ->
-      @winningCard = null
-      @winningPlayer = null
-
       @nextBlackCard()
 
     nextBlackCard: ->
+      @_clearWinningRound()
+      @board.clear()
       @board.setBlackCard @blackCards.dealOne()
 
     playWhiteCard: (playerId, cardId) ->
@@ -23,7 +22,7 @@ angular
 
     selectWinningWhiteCard: (cardId) ->
       [@winningCard, @winningPlayer] = @board.getWhiteCardAndPlayer cardId
-      
+
       @winningPlayer.addBlackCards @winningCard
 
     join: (player) ->
@@ -43,3 +42,7 @@ angular
         winningPlayer.addBlackCard @board.getBlackCard()
         @board.clear()
         defered.resolve()
+
+    _clearWinningRound: ->
+      @winningCard = null
+      @winningPlayer = null
