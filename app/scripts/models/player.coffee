@@ -20,6 +20,5 @@ angular
     addBlackCards: (blackCards) ->
       @blackCards = @blackCards.concat blackCards
 
-    removeWhiteCard: (cardId) ->
+    playWhiteCard: (cardId) ->
       @whiteCards.splice(cardId, 1)[0]
-

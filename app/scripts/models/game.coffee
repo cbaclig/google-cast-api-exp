@@ -17,9 +17,9 @@ angular
 
     playWhiteCard: (playerId, cardId) ->
       player = @players[playerId]
-      card = player.removeWhiteCard cardId
 
-      @board.addWhiteCard player, card
+      @board.addWhiteCard player, player.playWhiteCard(cardId)
+      player.addWhiteCards [@whiteCards.dealOne()]
 
     selectWinningWhiteCard: (cardId) ->
       [@winningCard, @winningPlayer] = @board.getWhiteCardAndPlayer cardId

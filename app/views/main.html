@@ -8,7 +8,7 @@
     {{ main.board.blackCard.text }}
   </p>
   <ul>
-    <li ng-repeat="c in main.board.whiteCards">
+    <li ng-repeat="c in main.board.whiteCards track by $index">
       {{ c.text }}
     </li>
   </ul>
