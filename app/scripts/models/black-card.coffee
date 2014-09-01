@@ -5,7 +5,7 @@ angular
 .factory 'BlackCard', ['Card', (Card) -> class BlackCard extends Card
   BLANK_REGEXP = "_+"
 
-  constructor: ->
+  constructor: (@text) ->
     super
 
     @blanks = @text.match(new RegExp(BLANK_REGEXP, 'g'))?.length or 0
