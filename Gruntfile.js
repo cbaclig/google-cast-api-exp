@@ -385,6 +385,14 @@ module.exports = function (grunt) {
       ]
     },
 
+    // git
+    gitpush: {
+        heroku: {
+          remote: 'heroku',
+          branch: 'master'
+        }
+    },
+
     // Test settings
     karma: {
       unit: {
@@ -442,6 +450,11 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'gitpush'
   ]);
 
   grunt.registerTask('default', [
