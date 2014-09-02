@@ -386,6 +386,17 @@ module.exports = function (grunt) {
     },
 
     // git
+    gitcommit: {
+        dist: {
+          options: {
+            message: 'Commit via grunt deploy'
+          },
+          files: {
+            src: ['dist/**']
+          }
+        }
+    },
+
     gitpush: {
         heroku: {
           remote: 'heroku',
