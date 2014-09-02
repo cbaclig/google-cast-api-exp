@@ -1,0 +1,23 @@
+<div>
+  <button ng-click="main.nextBlackCard()">Next Black Card</button>
+  <button ng-click="main.addPlayer('Jon')">Add Jon</button>
+  <button ng-click="main.playWhiteCard(0, 0)">Play white card 0 from player 0</button>
+  <button ng-click="main.selectWinningWhiteCard(0)">Select card  0 as winner</button>
+</div>
+<div>
+  <ul>
+    <li ng-repeat="p in main.players">
+      {{ p.name }}: {{ p.getScore() }}
+    </li>
+  </ul>
+  <p class="lead">
+    {{ main.board.blackCard.text }}
+  </p>
+  <ul>
+    <li ng-repeat="c in main.board.whiteCards track by $index">
+      {{ c.text }}
+    </li>
+  </ul>
+  <h1>{{ main.game.winningCard.text }}</h1>
+  <h2>{{ main.game.winningPlayer.name }}</h2>
+</div>
