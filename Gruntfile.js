@@ -465,7 +465,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('deploy', [
     'build',
-    'gitpush'
+    'gitadd:dist',
+    'gitcommit:dist',
+    'gitpush:heroku'
   ]);
 
   grunt.registerTask('default', [
